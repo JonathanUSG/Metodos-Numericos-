@@ -28,6 +28,33 @@ public class GaussJordan{
         System.out.println("\nMatriz aumentada ingresada:");
         mostrarMatriz(matriz, soluciones, n);
 
+        for(int i = 0; i < n; i++){
+            double pivote = matriz[i][i];
+            System.out.printf("Normalizando fila %d dividiendo por %.3f\n", i + 1, pivote);
+            for(int j = 0; j < n; j++){
+                matriz[i][j] /= pivote;  
+            }
+            soluciones[i] /= pivote;
+            mostrarMatriz(matriz, soluciones, n);
+
+            for(int k = 0; k < n; k++){
+                if(k != i){
+                    double factor = matriz[k][i];
+                    System.out.printf("Eliminando elemento [%d][%d] con factor %.3f\n", k + 1, i + 1, factor);
+                    for(int j = 0; j < n; j++){
+                        matriz[k][j] -= factor * matriz[i][j]; 
+                    }
+                    soluciones[k] -= factor * soluciones[i];
+                    mostrarMatriz(matriz, soluciones, n); 
+                }
+            }
+        }
+        System.out.println("Solución final:");
+        for(int i = 0; i < n; i++){
+            x[i] = soluciones[i];
+            System.out.printf("x[%d] = %.3f\n", i, x[i]);
+        }
+        scanner.close();
     } 
 
     public static void mostrarMatriz(double [][]matriz, double [] soluciones, int n){
