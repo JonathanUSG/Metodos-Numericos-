@@ -1,3 +1,4 @@
+package Tema3_SistemasEcuaciones.Metodos_Directos;
 import java.util.*;
 public class EliminacionGaussiana{
     public static void main(String[] args) {
@@ -30,20 +31,41 @@ public class EliminacionGaussiana{
                     matriz [i][k] -= factor * matriz[j][k];
                 } 
                 soluciones[i] -= factor * soluciones[j];
-                System.out.printf("\nElimimando elemento [%d][%d] con factor %.3f:\n", i + 1, j + 1, factor);
+                System.out.printf("\nEliminando elemento [%d][%d] con factor %.3f:\n", i + 1, j + 1, factor);
                 mostrarMatriz(matriz, soluciones, n);
             }
         }
-       
-    }
+
+            //Sustitución Hacia Atrás
+            System.out.println("\nResolviendo por sustitución hacia atrás");
+            for(int i = n - 1; i >=0; i--){
+                double suma = 0;
+                for(int j = i + 1; j < n; j++){
+                    suma += matriz[i][j] * x[j];
+                }
+                x[i] = (soluciones[i]-suma) / matriz[i][i];
+                System.out.printf("x[%d] = %.3f\n", i, x[i]);
+            }
+
+            //Mostrar Solución Final
+            System.out.println("\nSolución Final:");
+            for(int i = 0; i < n; i++){
+                System.out.printf("x[%d] = %.3f\n", i, x[i]);
+            }
+
+
+            scanner.close();
+        }
+
     public static void mostrarMatriz(double [][]matriz, double [] soluciones, int n){
         for(int i = 0; i < n; i++){
             System.out.print("|");
             for(int j = 0; j < n; j++){
                 System.out.printf("%8.3f ", matriz[i][j]);
             }
-            System.out.printf(" | &8.3f|\n", soluciones[i]);
+            System.out.printf(" | %8.3f|\n", soluciones[i]);
         }
         System.out.println();
     }
+    
 }
