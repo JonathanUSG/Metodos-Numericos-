@@ -49,6 +49,7 @@ public class GaussJordan{
                 }
             }
         }
+        //Mostrar solución final
         System.out.println("Solución final:");
         for(int i = 0; i < n; i++){
             x[i] = soluciones[i];
