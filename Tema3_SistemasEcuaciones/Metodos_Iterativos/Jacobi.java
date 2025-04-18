@@ -41,5 +41,60 @@ public class Jacobi{
             x[i] = 0;
             anterior[i] = 0;
         }
+
+        //Método de Jacobi
+        System.out.println("\nIniciando iteraciones de Jacobi....");
+        int iteracion = 0;
+        while(iteracion < maxIteraciones){
+            iteracion++;
+
+            //Calcular nuevos valores de x
+            for(int i = 0; i < n; i++){
+                double suma = soluciones [i];
+                for(int j = 0; j < n; j++){
+                    if(j != i){
+                        suma -= matriz[i][j] * anterior[j];
+                    }
+                }
+                x[i] = suma / matriz [i][i];
+            }
+            double maxDiferencia = 0;
+            for(int i = 0; i < n; i++){
+                maxDiferencia = Math.max(maxDiferencia, Math.abs(x[i] - anterior[i]));
+            }
+            //Imprimir resultados
+            System.out.printf("Iteración %d (Diferencia Máxima: %.3f):\n", iteracion, maxDiferencia);
+            for(int i = 0; i < n; i++){
+                System.out.printf("x[%d] = %.3f\n", i, x[i]);
+            }
+
+            //Verificar convergencia
+            boolean convergencia = true;
+            for(int  i = 0; i < n; i++){
+                if (Math.abs(x[i] - anterior[i]) > tolerancia) {
+                    convergencia = false;
+                    break;
+                }
+            }
+
+            // Si converge, mostrar solución y salir
+            if(convergencia){
+                System.out.println("\nConvergencia alcanzada en la iteración " + iteracion + "!");
+                break;
+            }
+            //Copiar valores para lasiguiente iteración
+            for(int i = 0; i < n; i++){
+                anterior[i] = x[i];
+            }
+        }
+        if (iteracion >= maxIteraciones) {
+            System.out.println("\nAdvertencia: No se alcanzó convergencia dentro del número de iteraciones establecidas");
+        }
+        //Mostrar solución final
+        System.out.println("\nSolución Final:");
+        for(int i = 0; i < n; i++){
+            System.out.printf("x[%d] = %.3f\n", i, x[i]);
+        }
+        scanner.close();
     }
 }
