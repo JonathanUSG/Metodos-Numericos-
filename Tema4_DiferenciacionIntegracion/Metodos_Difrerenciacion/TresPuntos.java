@@ -6,6 +6,7 @@ public class TresPuntos {
         double h = 0.1; // Tamaño del Paso
         int n = 4;  // Número Fijo para compatibilidad 
 
+        
         //Imprimir Información de la Función
         System.out.println("Función: x * sin(x)");
         System.out.println("Punto de derivación: " + x);
