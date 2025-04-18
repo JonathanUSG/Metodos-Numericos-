@@ -24,10 +24,7 @@ Son métodos que se aproximan a la solución mediante un proceso repetitivo. Son
 
 ## Contenido
 
-- Apuntes y explicaciones teóricas de cada método
 - Archivos de código en Java implementando cada técnica
-- Ejercicios desarrollados en clase
-- Recursos visuales y ejemplos numéricos
 
 ---
 
