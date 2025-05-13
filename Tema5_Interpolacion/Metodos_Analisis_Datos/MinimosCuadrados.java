@@ -19,4 +19,25 @@ public class MinimosCuadrados {
         }
         System.out.println(); // Línea en blanco para separar visualmente
     }
+
+    // Aquí se hace todo el cálculo 
+    public static double[] calcularMinimosCuadrados(double []x, double []y){
+        int n = x.length;
+        double sumaX = 0, sumaY = 0, sumaXY = 0, sumaX2 = 0;
+
+        // Sumamos lo necesario: x, y, x*y y x^2
+        for(int i = 0; i < n; i++){
+            sumaX += x[i];
+            sumaY += y[i];
+            sumaXY += x[i] * y[i];
+            sumaX2 += x[i] * x[i];
+        }
+
+        // Fórmulas para calcular la pendiente (m) y la intersección (b)
+        double pendiente = (n * sumaXY - sumaX * sumaY) / (n * sumaX2 - sumaX * sumaX);
+        double interseccion = (sumaY - pendiente * sumaX) / n;
+
+        // Devolvemos ambos en un arreglo
+        return new double[]{pendiente, interseccion};
+    }
 }
