@@ -17,4 +17,5 @@ public class InterpolacionLineal {
     public static double calcularErrorPorcentual(double valorReal, double valorInterpolado){
         return (Math.abs(valorInterpolado - valorInterpolado) / Math.abs(valorReal) * 100);
     }
+    
 }
