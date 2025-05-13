@@ -17,8 +17,11 @@ public class InterpolacionPolinomica{
         System.out.printf("Valor Interpolado en x = %.1f: %.4f\n", xBuscado, resultado);
 
         // Calcular y mostrar cuota de error
-        double error = calcularError(valorReal, resultado);
-        System.out.printf("Cuota de error estimada: %.4f\n", error);
+        double errorAbsoluto = calcularError(valorReal, resultado);
+        double errorPorcentual = calcularErrorPorcentual(valorReal, resultado);
+
+        System.out.printf("Cuota de error estimada: %.4f\n", errorAbsoluto);
+        System.out.printf("Error Porcentual: %.2f%%\n", errorPorcentual);
 
         // Mostrar los puntos usados
         System.out.println("\nPuntos Utilizados:");
@@ -48,5 +51,9 @@ public class InterpolacionPolinomica{
         return Math.abs(valorReal - valorInterpolado);
     }
 
+    // Método para calcular el error porcentual
+    public static double calcularErrorPorcentual(double valorReal, double valorInterpolado){
+        return (Math.abs(valorInterpolado - valorReal) / Math.abs(valorReal)) * 100;
+    }
     
 }
