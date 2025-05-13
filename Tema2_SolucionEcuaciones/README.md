@@ -1,79 +1,54 @@
-# 📘 Tema 5: Interpolación
+# Tema 2: Métodos de Solución de Ecuaciones
 
-Este tema aborda técnicas numéricas para **estimar valores intermedios** de una función a partir de datos discretos.  
-La **interpolación** busca construir una función que pase exactamente por los puntos dados, mientras que los **métodos de análisis de datos** permiten modelar tendencias y relaciones entre variables.
-
----
-
-## 📂 Contenido
-
-### 📁 Metodos_Interpolacion/
-Métodos que construyen funciones para estimar valores entre puntos conocidos:
-
-- **Interpolación Lineal**
-- **Interpolación Polinómica**
-
-### 📁 Analisis_Datos/
-Métodos para modelar relaciones y tendencias en datos:
-
-- **Correlación**
-- **Regresión**
-- **Mínimos Cuadrados**
+Este tema abarca diferentes métodos numéricos para encontrar raíces de funciones no lineales. La raíz de una función $f(x)$ es el valor de $x$ que hace que $f(x) = 0$. Los métodos se dividen en dos grandes categorías: **métodos cerrados** y **métodos abiertos**.
 
 ---
 
-## 📌 Definiciones de los Métodos
+## Contenido
 
-### 🔹 Interpolación Lineal
-Estima valores entre dos puntos conocidos conectándolos con una línea recta.  
-Es simple y útil para datos con comportamiento aproximadamente lineal.
+- 📁 `Metodos_Cerrados/`: Métodos que requieren un intervalo con un cambio de signo ($f(a) \cdot f(b) < 0$).
+  - Método de Bisección
+  - Método de la Regla Falsa
 
-### 🔹 Interpolación Polinómica
-Construye un polinomio de grado $n$ que pasa por $n+1$ puntos.  
-Es más precisa para datos complejos, pero puede sufrir **oscilaciones** (_fenómeno de Runge_).
-
-### 🔹 Correlación
-Mide la **fuerza y dirección** de la relación entre dos variables, usando coeficientes como el de **Pearson**.
-
-### 🔹 Regresión
-Modela la relación entre variables dependientes e independientes, ajustando una función (lineal o no lineal) a los datos.
-
-### 🔹 Mínimos Cuadrados
-Ajusta una función **minimizando la suma de los cuadrados de los errores** entre los datos y el modelo.
+- 📁 `Metodos_Abiertos/`: Métodos que no necesitan un intervalo inicial, solo uno o dos valores de inicio.
+  - Método del Punto Fijo
+  - Método de Newton-Raphson
+  - Método de la Secante
 
 ---
 
-## 📊 Comparación General
+## Comparación General
 
-| Característica       | Métodos de Interpolación       | Métodos de Análisis de Datos         |
-|----------------------|--------------------------------|--------------------------------------|
-| **Objetivo**         | Estimar valores exactos        | Modelar tendencias                   |
-| **Puntos de datos**  | Pasa exactamente por puntos    | Ajusta una curva aproximada          |
-| **Complejidad**      | Moderada                       | Variable (depende del modelo)        |
-| **Ejemplos**         | Lineal, Polinómica             | Correlación, Regresión, Mínimos Cuadrados |
+| Característica         | Métodos Cerrados               | Métodos Abiertos                      |
+|------------------------|--------------------------------|----------------------------------------|
+| Requieren intervalo    | Sí ($f(a) \cdot f(b) < 0$)     | No, solo valores iniciales            |
+| Convergencia           | Lenta pero garantizada         | Rápida, pero no siempre garantizada   |
+| Implementación         | Sencilla                       | Puede requerir derivadas              |
+| Ejemplos               | Bisección, Regla Falsa         | Punto Fijo, Newton-Raphson, Secante   |
 
 ---
 
-## 🎯 Objetivo del Tema
+## Objetivo del Tema
 
 El objetivo de este tema es que el estudiante:
-
-- Comprenda cómo funcionan los métodos de interpolación y análisis de datos.
-- Aplique cada método según el tipo de datos y el objetivo del análisis.
-- Evalúe las ventajas y limitaciones de cada técnica.
-- Analice la precisión y estabilidad de los métodos.
-
----
-
-## ✅ Recomendaciones
-
-- Visualizar los datos antes de elegir un método.
-- Verificar la cantidad y calidad de los puntos de datos.
-- Considerar el **fenómeno de Runge** al usar interpolación polinómica de alto grado.
-- Comparar los resultados de diferentes métodos para validar modelos.
+- Comprenda la diferencia entre métodos cerrados y abiertos.
+- Aplique cada método correctamente según el tipo de función y condiciones iniciales.
+- Evalúe ventajas y desventajas de cada técnica.
+- Analice la **convergencia** y **eficiencia** de cada método.
 
 ---
 
-## ✏️ Notación
+## Recomendaciones
 
-- $x_i, y_i$: Puntos de datos
+- Graficar la función antes de aplicar cualquier método.
+- Verificar que se cumplan las condiciones de uso de cada método.
+- Comparar el número de iteraciones requeridas por cada técnica.
+
+---
+
+## Notación
+
+- $x_r$: Aproximación de la raíz.
+- $f(x)$: Función evaluada.
+- $x_n$: Iteración actual.
+- $x_{n+1}$: Siguiente iteración.
