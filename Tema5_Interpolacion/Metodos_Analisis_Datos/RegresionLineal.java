@@ -18,5 +18,25 @@ public class RegresionLineal {
         }
         System.out.println(); // Espacio para separar
     }
+
+    // Método para calcular la Regresión Lineal
+    public static double[] calcularRegresionLineal(double[] x, double[] y){
+        int n = x.length;
+        double sumaX = 0, sumaY = 0, sumaXY = 0, sumaX2 = 0;
+
+        for(int i = 0; i < n; i++){
+            sumaX += x[i];
+            sumaY += y[i];
+            sumaXY += x[i] * y[i];
+            sumaX2 += x[i] * x[i];
+
+        }
+        double pendiente = (n * sumaXY - sumaX * sumaY) / (n * sumaX2 - sumaX * sumaX);
+        double interseccion = (sumaY - pendiente * sumaX) / n;
+        
+        return new double[]{pendiente, interseccion};
+    }
+
     
+
 }
