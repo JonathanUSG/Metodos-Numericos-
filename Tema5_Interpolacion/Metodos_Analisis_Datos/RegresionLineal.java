@@ -37,6 +37,14 @@ public class RegresionLineal {
         return new double[]{pendiente, interseccion};
     }
 
-    
+    // Método para calcular el error absoluto
+    public static double calcularErrorAbsoluto(double real, double estimado){
+        return Math.abs(real - estimado);
+    }
+
+    // Método para calcular el error porcentual
+    public static double calcularErrorPorcentual(double valorReal, double valorInterpolado){
+        return (Math.abs(valorInterpolado - valorReal) / Math.abs(valorReal)) * 100;
+    }
 
 }
