@@ -40,4 +40,15 @@ public class MinimosCuadrados {
         // Devolvemos ambos en un arreglo
         return new double[]{pendiente, interseccion};
     }
+
+    // Método para calcular el error absoluto entre el valor real y el estimado
+    public static double calcularErrorAbsoluto(double real, double estimado){
+        return Math.abs(real - estimado);  // Solo diferencia en valor, sin signo
+    }
+
+    // Método para calcular el error porcentual con base en el valor real
+    public static double calcularErrorPorcentual(double real, double errorAbsoluto){
+        return (errorAbsoluto / real) * 100; // Se convierte a porcentaje
+    }
+
 }
