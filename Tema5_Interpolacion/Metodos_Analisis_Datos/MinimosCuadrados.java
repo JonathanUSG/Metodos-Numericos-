@@ -8,6 +8,17 @@ public class MinimosCuadrados {
        
        // Imprimimos los datos originales como tabla para visualizarlos mejor
        mostrarDatos(x, y);
+
+       // Paso 1: calculamos la pendiente e intersección
+       double resultados [] = calcularMinimosCuadrados(x, y);
+       double pendiente = resultados[0];
+       double interseccion = resultados[1];
+
+       // Mostramos la ecuación que representa la regresión lineal
+       System.out.printf("Ecuación ajustada: y = %.4fx + %.4f\n\n", pendiente, interseccion);
+
+       // Paso 2: calculamos los errores para evaluar qué tan buena es la predicción
+       calcularErrores(x, y, pendiente, interseccion);
     }
 
     // Método para mostrar los valores de entrada x e y como una tabla
@@ -51,4 +62,32 @@ public class MinimosCuadrados {
         return (errorAbsoluto / real) * 100; // Se convierte a porcentaje
     }
 
+    public static void calcularErrores(double[] x, double[] y, double pendiente, double interseccion){
+        int n = x.length;
+        double sumaErroresPorcentuales = 0;
+
+        // Encabezado de la tabla de resultados
+        System.out.println(" x\t y real\t y estimado\t Error abs\t Error %");
+        System.out.println("-----------------------------------------------------");
+
+        for(int i = 0; i < n; i++){
+            // Calculamos el valor que estimaría la recta
+            double yEstimado = pendiente * x[i] + interseccion;
+
+            // Calculamos errores con los métodos auxiliares
+            double errorAbsoluto = calcularErrorAbsoluto(y[i], yEstimado);
+            double errorPorcentual = calcularErrorPorcentual(y[i], errorAbsoluto);
+
+            // Acumulamos para luego sacar el promedio
+            sumaErroresPorcentuales += errorPorcentual;
+
+            // Imprimimos cada fila con los valores y errores
+            System.out.printf("%.1f\t %.1f\t   %.2f\t\t %.2f\t\t %.2f%%\n",
+                    x[i], y[i], yEstimado, errorAbsoluto, errorPorcentual);
+        }
+
+        // Promedio del error porcentual al final
+        double promedioError = sumaErroresPorcentuales / n;
+        System.out.printf("\nError Porcentual promedio: %.2f%%\n", promedioError);
+    }
 }
