@@ -59,6 +59,6 @@ public class ReglaFalsa{
         }
 
         scanner.close(); // Cerramos el Scanner (buena práctica)
-        
+
     }
 }
