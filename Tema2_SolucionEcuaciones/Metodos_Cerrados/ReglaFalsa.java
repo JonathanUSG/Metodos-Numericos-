@@ -57,8 +57,7 @@ public class ReglaFalsa{
             // Mostramos el resultado final
             System.out.printf("%nLa raíz aproximada es: %.4f%n", c);
         }
-
         scanner.close(); // Cerramos el Scanner (buena práctica)
-
     }
+
 }
