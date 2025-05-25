@@ -30,8 +30,34 @@ public class ReglaFalsa{
 
             // Imprime encabezado de la tabla
             System.out.printf("%-5s %-12s %-12s %-12s %-12s%n", "Iter", "a", "b", "c", "f(c)");
+
+            // Ciclo principal del método
+            do {
+                // Esta es la fórmula principal del método de la Regla Falsa
+                c = b - (f(b) * (a - b)) / (f(a) - f(b));
+                double fc = f(c); // Evaluamos la función en el nuevo punto c
+
+                // Imprime los valores de esta iteración
+                System.out.printf("%-5d %-12.6f %-12.6f %-12.6f %-12.6f%n",
+                        iteraciones, a, b, c, fc);
+
+                // Si f(c) es exactamente 0, encontramos la raíz
+                if (fc == 0.0)
+                    break;
+                // Si hay cambio de signo entre f(a) y f(c), la raíz está entre a y c
+                else if (f(a) * fc < 0)
+                    b = c;
+                // Si no, está entre c y b
+                else
+                    a = c;
+
+                iteraciones++;
+            } while (Math.abs(f(c)) > epsilon); // Seguimos iterando hasta que f(c) esté dentro del error deseado
+
+            // Mostramos el resultado final
+            System.out.printf("%nLa raíz aproximada es: %.4f%n", c);
         }
 
-        scanner.close();
+        scanner.close(); // Cerramos el Scanner (buena práctica)
     }
 }
