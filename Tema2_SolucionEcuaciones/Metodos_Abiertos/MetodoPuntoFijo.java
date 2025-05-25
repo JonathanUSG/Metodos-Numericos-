@@ -31,6 +31,13 @@ public class MetodoPuntoFijo {
         System.out.print("Ingrese el error tolerado (por ejemplo 0.0001): ");
         double epsilon = scanner.nextDouble();
 
+        int iteraciones = 0;
+        double x1;
+
+        // Se imprime el encabezado de la tabla con las columnas:
+        // Iteración, valor anterior (x0), g(x0), y el error
+        System.out.printf("%-5s %-12s %-12s %-12s%n", "Iter", "x0", "g(x0)", "Error");
+
         scanner.close();
     }
 }
