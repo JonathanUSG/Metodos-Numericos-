@@ -39,9 +39,33 @@ public class EulerSystem {
         x[0] = x0;
         y1[0] = y1_0;
         y2[0] = y2_0;
-        
+
         // Imprimimos el encabezado de la tabla de resultados
         System.out.printf("%10s %10s %10s%n", "x", "y1", "y2");
-        System.out.printf("%10.4f %10.4f %10.4f%n", x[0], y1[0], y2
+        System.out.printf("%10.4f %10.4f %10.4f%n", x[0], y1[0], y2[0]);
+
+        // Bucle para cada paso del método de Euler
+        for (int i = 0; i < n; i++) {
+            // Calculamos las derivadas en el punto actual
+            double[] derivatives = f(x[i], y1[i], y2[i]);
+
+            // Actualizamos los valores de x, y1 y y2 usando la fórmula de Euler
+            x[i + 1] = x[i] + h;
+            y1[i + 1] = y1[i] + h * derivatives[0];
+            y2[i + 1] = y2[i] + h * derivatives[1];
+
+            // Mostramos los resultados de este paso
+            System.out.printf("%10.4f %10.4f %10.4f%n", x[i + 1], y1[i + 1], y2[i + 1]);
+        }
+    }
+    
+    // Función que define el sistema de ecuaciones diferenciales
+    // En este ejemplo: dy1/dx = -2x*y1, dy2/dx = y1 - y2
+    // Retorna un arreglo con las derivadas [dy1/dx, dy2/dx]
+    public static double[] f(double x, double y1, double y2) {
+        double[] derivatives = new double[2];
+        derivatives[0] = -2 * x * y1; // dy1/dx
+        derivatives[1] = y1 - y2;     // dy2/dx
+        return derivatives;
     }
 }
