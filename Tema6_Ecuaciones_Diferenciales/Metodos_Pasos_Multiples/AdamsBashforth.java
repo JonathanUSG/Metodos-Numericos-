@@ -48,6 +48,23 @@ public class AdamsBashforth {
             y[i + 1] = y[i] + (h/6) * (k1 + 2*k2 + 2*k3 + k4);
             f[i + 1] = f(x[i + 1], y[i + 1]);
         }
+        
+        // Imprimimos el encabezado de la tabla de resultados
+        System.out.printf("%10s %10s%n", "x", "y");
+        for (int i = 0; i <= 3; i++) {
+            System.out.printf("%10.4f %10.4f%n", x[i], y[i]);
+        }
+
+        // Aplicamos Adams-Bashforth de orden 4 para los pasos restantes
+        for (int i = 3; i < n; i++) {
+            x[i + 1] = x[i] + h;
+            // Fórmula de Adams-Bashforth de orden 4
+            y[i + 1] = y[i] + (h/24) * (55 * f[i] - 59 * f[i-1] + 37 * f[i-2] - 9 * f[i-3]);
+            f[i + 1] = f(x[i + 1], y[i + 1]);
+
+            // Mostramos el resultado de este paso
+            System.out.printf("%10.4f %10.4f%n", x[i + 1], y[i + 1]);
+        }
     }
     // Función que define la ecuación diferencial dy/dx = f(x, y)
     // En este ejemplo, usamos dy/dx = -2x*y (puedes cambiarla según necesites)
