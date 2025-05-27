@@ -39,5 +39,9 @@ public class EulerSystem {
         x[0] = x0;
         y1[0] = y1_0;
         y2[0] = y2_0;
+        
+        // Imprimimos el encabezado de la tabla de resultados
+        System.out.printf("%10s %10s %10s%n", "x", "y1", "y2");
+        System.out.printf("%10.4f %10.4f %10.4f%n", x[0], y1[0], y2
     }
 }
