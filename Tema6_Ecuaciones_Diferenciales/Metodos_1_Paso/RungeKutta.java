@@ -94,4 +94,55 @@ public class RungeKutta{
             return 0;
         }
     }
+    // Método que implementa el algoritmo de Runge-Kutta de 4to orden
+    public static double rungeKutta(String funcion, double x0, double y0, double h, int pasos) {
+        double x = x0;
+        double y = y0;
+
+        // Iteramos según el número de pasos
+        for (int i = 0; i < pasos; i++) {
+            // Calculamos los coeficientes k1, k2, k3, k4
+            double k1 = h * evaluarFuncion(funcion, x, y);
+            double k2 = h * evaluarFuncion(funcion, x + h / 2.0, y + k1 / 2.0);
+            double k3 = h * evaluarFuncion(funcion, x + h / 2.0, y + k2 / 2.0);
+            double k4 = h * evaluarFuncion(funcion, x + h, y + k3);
+
+            // Actualizamos y con la fórmula de Runge-Kutta
+            y += (k1 + 2*k2 + 2*k3 + k4) / 6.0;
+            // Avanzamos x según el tamaño del paso
+            x += h;
+
+            // Mostramos el resultado de cada paso
+            System.out.printf("Paso %d: x = %.5f, y = %.5f\n", i + 1, x, y);
+        }
+        return y;
+    }
+    // Método principal para ejecutar el programa
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Pedimos al usuario los datos de entrada
+        System.out.println("Método Runge-Kutta sin ScriptEngine, funciones básicas");
+        System.out.print("Ingresa la función f(x,y) (ejemplo: x + y, sin(x) - y, x * y): ");
+        String funcion = sc.nextLine();
+
+        System.out.print("Ingresa x0: ");
+        double x0 = sc.nextDouble();
+
+        System.out.print("Ingresa y0: ");
+        double y0 = sc.nextDouble();
+
+        System.out.print("Ingresa paso h: ");
+        double h = sc.nextDouble();
+
+        System.out.print("Número de pasos: ");
+        int pasos = sc.nextInt();
+
+        // Ejecutamos Runge-Kutta y mostramos el resultado final
+        double resultado = rungeKutta(funcion, x0, y0, h, pasos);
+        System.out.printf("Resultado final: y(%.5f) = %.5f\n", x0 + pasos * h, resultado);
+        
+        // Cerramos el scanner
+        sc.close();
+    }
 }
