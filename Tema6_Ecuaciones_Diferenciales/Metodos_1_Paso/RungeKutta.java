@@ -67,4 +67,31 @@ public class RungeKutta{
         }
         return resultado;
     }
+    // Método para evaluar un factor (número o expresión simple)
+    public static double evaluarFactor(String expr) {
+        // Quitamos espacios al inicio y final
+        expr = expr.trim();
+        
+        // Eliminamos paréntesis externos si los hay
+        while (expr.startsWith("(") && expr.endsWith(")")) {
+            expr = expr.substring(1, expr.length() - 1).trim();
+        }
+        
+        // Quitamos signos + al inicio si son redundantes
+        while (expr.startsWith("+")) {
+            expr = expr.substring(1).trim();
+        }
+        
+        // Si la expresión está vacía, devolvemos 0
+        if (expr.isEmpty()) return 0;
+        
+        // Intentamos convertir la expresión a número
+        try {
+            return Double.parseDouble(expr);
+        } catch (NumberFormatException e) {
+            // Si falla, mostramos error y devolvemos 0
+            System.out.println("Error al evaluar factor: " + expr);
+            return 0;
+        }
+    }
 }
