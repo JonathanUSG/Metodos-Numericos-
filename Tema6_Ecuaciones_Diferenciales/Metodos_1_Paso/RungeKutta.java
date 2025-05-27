@@ -25,4 +25,46 @@ public class RungeKutta{
         // Evaluamos la expresión resultante
         return evaluarExpresionSimple(funcion);
     }
+    // Método para evaluar expresiones con sumas y restas
+    public static double evaluarExpresionSimple(String expr) {
+        double resultado = 0;
+        // Cambiamos dobles negativos por suma para evitar errores
+        expr = expr.replaceAll("--", "+");
+
+        // Separamos la expresión en partes según los signos + o -
+        String[] sumandos = expr.split("(?=[+-])");
+
+        // Sumamos o restamos cada parte
+        for (String sumando : sumandos) {
+            resultado += evaluarProducto(sumando);
+        }
+        return resultado;
+    }
+
+    // Método para evaluar productos y divisiones dentro de un sumando
+    public static double evaluarProducto(String expr) {
+        String[] factores;
+        double resultado = 1;
+
+        // Si hay división, la procesamos con prioridad
+        if (expr.contains("/")) {
+            factores = expr.split("/");
+            // Evaluamos el primer factor
+            resultado = evaluarFactor(factores[0]);
+            // Dividimos por los factores siguientes
+            for (int i = 1; i < factores.length; i++) {
+                resultado /= evaluarFactor(factores[i]);
+            }
+        } else if (expr.contains("*")) {
+            // Si hay multiplicación, procesamos cada factor
+            factores = expr.split("\\*");
+            for (String f : factores) {
+                resultado *= evaluarFactor(f);
+            }
+        } else {
+            // Si no hay * ni /, evaluamos directamente
+            resultado = evaluarFactor(expr);
+        }
+        return resultado;
+    }
 }
