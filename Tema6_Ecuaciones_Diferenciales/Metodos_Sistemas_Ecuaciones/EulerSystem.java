@@ -19,9 +19,25 @@ public class EulerSystem {
         double xf = scanner.nextDouble();
         System.out.print("Ingresa el tamaño del paso (h): ");
         double h = scanner.nextDouble();
-        
+
+        // Llamamos al método de Euler
+        eulerMethod(x0, y1_0, y2_0, xf, h);
+
         // Cerramos el scanner
         scanner.close();
     }
 
+    // Método que implementa el método de Euler para un sistema de 2 ecuaciones
+    public static void eulerMethod(double x0, double y1_0, double y2_0, double xf, double h) {
+        // Calculamos cuántos pasos necesitamos
+        int n = (int) Math.ceil((xf - x0) / h);
+        double[] x = new double[n + 1];
+        double[] y1 = new double[n + 1];
+        double[] y2 = new double[n + 1];
+
+        // Inicializamos los valores iniciales
+        x[0] = x0;
+        y1[0] = y1_0;
+        y2[0] = y2_0;
+    }
 }
