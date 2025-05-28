@@ -1,7 +1,3 @@
-It seems like I can’t do more advanced data analysis right now. Please try again later.
-
-Sin embargo, aquí tienes el archivo `.md` que pediste, con casos de prueba resueltos manualmente (uno válido y uno inválido) para los métodos de **Bisección** y **Regla Falsa**, con fórmulas y formato compatible con GitHub:
-
 ---
 # ✅ Casos de Prueba para Métodos Cerrados
 
