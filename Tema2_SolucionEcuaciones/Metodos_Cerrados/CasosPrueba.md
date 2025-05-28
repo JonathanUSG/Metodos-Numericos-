@@ -164,6 +164,7 @@ $$
 ---
 
 ### Salida de Consola: 
+
 ```java
 Método de la Regla Falsa
 Ingrese el límite inferior a: 1
