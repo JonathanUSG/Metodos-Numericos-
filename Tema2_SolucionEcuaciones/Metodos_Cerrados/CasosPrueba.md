@@ -1,4 +1,3 @@
----
 # ✅ Casos de Prueba para Métodos Cerrados
 
 Este documento presenta dos casos de prueba: uno válido y uno inválido, aplicados a los métodos de **Bisección** y **Regla Falsa**, usando la función:
