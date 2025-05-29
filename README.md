@@ -1,4 +1,4 @@
-# Metodos-Numericos-
+# Métodos Numéricos
 
 Nombre del Alumno: Jonathan Uriel Salinas García
 
